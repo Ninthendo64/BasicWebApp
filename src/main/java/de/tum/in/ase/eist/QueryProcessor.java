@@ -34,6 +34,21 @@ public class QueryProcessor {
                 }
             }
             return Integer.toString(max);
+        }else if(query.contains("what is") && query.contains("plus")){
+            String s = query;
+            String sub = s.replaceAll("what is ", "");
+            sub = sub.replaceAll("plus", ",");
+            sub = sub.replaceAll(" ", "");
+            String[] a = sub.split(",");
+            int[] b = new int[a.length];
+            for (int i = 0; i < a.length; i++) {
+                b[i] = Integer.parseInt(a[i]);
+            }
+            int res = 0;
+            for (int i = 0; i < b.length; i++) {
+                res += b[i];
+            }
+            return Integer.toString(res);
         }else {
             return "";
         }
