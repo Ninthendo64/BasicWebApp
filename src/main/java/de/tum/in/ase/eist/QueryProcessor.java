@@ -24,6 +24,9 @@ public class QueryProcessor {
             for (int i = 0; i < x.length; i++) {
                 b[i] = Integer.parseInt(x[i]);
             }
+            if(b.length == 0){
+                return "";
+            }
             int max = b[0];
             for (int i = 0; i < b.length; i++) {
                 if (b[i] > max){
