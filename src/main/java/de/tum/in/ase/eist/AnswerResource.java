@@ -17,7 +17,6 @@ public class AnswerResource {
 
 	private final QueryProcessor queryProcessor;
 
-
 	public AnswerResource(QueryProcessor queryProcessor) {
 		this.queryProcessor = queryProcessor;
 	}
