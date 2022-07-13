@@ -16,7 +16,7 @@ public class QueryProcessor {
         } else if (query.contains("name")) {
            return "Rafael";
         } else if (query.contains("which of the following numbers is the largest")){ // TODO extend the programm here
-            String s = query;
+            String s = query.substring(query.indexOf("which"),query.length()-1);
             String sub = query.substring(query.indexOf(':'),query.length()-1);
             String filter = sub.replaceAll(" ","");
             String[] x = filter.split(",");
@@ -35,8 +35,8 @@ public class QueryProcessor {
             }
             return Integer.toString(max);
         }else if(query.contains("what is") && query.contains("plus")){
-            String s = query;
-            String sub = s.replaceAll("what is ", "");
+            String s = query.substring(query.indexOf("what"),query.length()-1);
+            String sub = s.replaceAll("is ", "");
             sub = sub.replaceAll("plus", ",");
             sub = sub.replaceAll(" ", "");
             String[] a = sub.split(",");
