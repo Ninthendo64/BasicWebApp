@@ -36,7 +36,7 @@ public class QueryProcessor {
             return Integer.toString(max);
         }else if(query.contains("what is") && query.contains("plus")){
             String s = query.substring(query.indexOf("what"),query.length()-1);
-            String sub = s.replaceAll("is ", "");
+            String sub = s.replaceAll("what is ", "");
             sub = sub.replaceAll("plus", ",");
             sub = sub.replaceAll(" ", "");
             String[] a = sub.split(",");
@@ -49,7 +49,22 @@ public class QueryProcessor {
                 res += b[i];
             }
             return Integer.toString(res);
-        }else {
+        }else if (query.contains("what is") && query.contains("multiplied by")){
+            String s = query.substring(query.indexOf("what"),query.length()-1);
+            String sub = s.replaceAll("what is ", "");
+            sub = sub.replaceAll("multiplied by", ",");
+            sub = sub.replaceAll(" ", "");
+            String[] a = sub.split(",");
+            int[] b = new int[a.length];
+            for (int i = 0; i < a.length; i++) {
+                b[i] = Integer.parseInt(a[i]);
+            }
+            int res = 0;
+            for (int i = 0; i < b.length; i++) {
+                res *= b[i];
+            }
+            return Integer.toString(res);
+        }else{
             return "";
         }
     }
