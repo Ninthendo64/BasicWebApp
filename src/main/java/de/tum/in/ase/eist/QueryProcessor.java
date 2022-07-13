@@ -2,6 +2,8 @@ package de.tum.in.ase.eist;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class QueryProcessor {
 
@@ -13,7 +15,23 @@ public class QueryProcessor {
                     "writer in the English language and the world's pre-eminent dramatist.";
         } else if (query.contains("name")) {
            return "Rafael";
-        } else { // TODO extend the programm here
+        } else if (query.contains("which of the following numbers is the largest")){ // TODO extend the programm here
+            String s = query;
+            String sub = query.substring(query.indexOf(':'),query.length()-1);
+            String filter = sub.replaceAll(" ","");
+            String[] x = filter.split(",");
+            int[] b = new int[x.length];
+            for (int i = 0; i < x.length; i++) {
+                b[i] = Integer.parseInt(x[i]);
+            }
+            int max = b[0];
+            for (int i = 0; i < b.length; i++) {
+                if (b[i] > max){
+                    max = b[i];
+                }
+            }
+            return Integer.toString(max);
+        }else {
             return "";
         }
     }
